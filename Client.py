@@ -1,6 +1,3 @@
-Sure, I'll add comments to explain the code:
-
-```python
 import socket, hashlib
 
 # Function to verify the integrity of the downloaded file
@@ -117,4 +114,3 @@ def main():
 # Run the main function if the script is executed
 if __name__ == "__main__":
     main()
-```
