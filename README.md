@@ -26,7 +26,8 @@ This protocol defines the communication format between the client and server in 
 - `<headers>`: Additional information about the response.
 - `<message-body>`: Actual data being sent in the response (for file downloads).
   
-https://github.com/Athi-sirmatt/Networks-Socket_programming/issues/2#issue-2072102796
+<img width="800" alt="Screenshot 2024-01-09 122735" src="https://github.com/Athi-sirmatt/Networks-Socket_programming/assets/93771863/22abacfa-ea5d-4922-a17b-97d8e3e81198">
+
 
 ## Features
 
