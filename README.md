@@ -1,66 +1,52 @@
-# Networked File Sharing Application
+# File Sharing Application Protocol
 
-## Project Overview
+## Overview
 
-This project involves the design and implementation of a client-server file sharing application using TCP sockets in Python. The primary focus is on protocol design, socket programming, and ensuring file integrity during transmission. The application follows a client-server model where clients can upload/download files from a shared server.
+This protocol defines the communication format between the client and server in a file-sharing application based on a client-server model. The protocol includes request and response messages, each comprising three main parts: the request line, message header, and message body. The structure varies depending on whether it's a request or response message.
 
-## Application Features
+## Request Message Format
 
-1. **File Upload/Download:**
-   - Clients can upload files to the server.
-   - Clients can download files from the server.
+![Request Message Format](images/request_message_format.png)
 
-2. **File Visibility:**
-   - Clients can indicate whether uploaded files are 'open' or 'protected.'
-   - 'Open' files are visible and downloadable by any client.
-   - 'Protected' files are only accessible to clients with the correct 'key.'
+- `<method>`: Request method (e.g., GET, POST, LIST).
+- `<IP address>`: Server's IP address.
+- `<File name>`: Name of the file being uploaded or downloaded.
+- `<permission>`: Specifies if the file is open or protected.
+- `<key>`: Key for accessing protected files.
+- `<carriage_return>`: Carriage return.
+- `<Header>`: Additional information about the request.
+- `<message-body>`: Actual content of the file.
 
-3. **File Listing:**
-   - Clients can query the server for a listing of available files.
+## Response Message Format
 
-4. **File Validation:**
-   - Implement a file validation mechanism to ensure the integrity of transferred files.
-   - Include validation information within each message for sender and receiver verification.
+![Response Message Format](images/response_message_format.png)
 
-5. **Error Handling:**
-   - Server sends appropriate error messages if the requested file is not present or the client lacks permission.
+- `<status code>`: Three-digit code indicating the status of the request (e.g., 200 for OK, 404 for Not Found).
+- `<status message>`: Human-readable response status description.
+- `<headers>`: Additional information about the response.
+- `<message-body>`: Actual data being sent in the response (for file downloads).
 
-## Protocol Design
+## Features
 
-### Privacy/Confidentiality Considerations
+### File Storage & User Authentication
 
-- Users can specify file sharing permissions.
-- Options include:
-  - Visibility/Downloadable by anyone.
-  - Visibility/Downloadable to specific clients.
-  - Shared secret-key access.
+#### Segregation of File Storage Directories
 
-### Message Types
+The server utilizes two directories: "Open_Storage" for open files and "Protected_Storage" for protected files. This segregation simplifies tracking and categorization of files based on their permissions.
 
-1. **Command Messages:**
-   - Initiate or terminate communication.
-   - Specify actions such as upload, download, and file listing.
+#### File Management & Tracking Mechanism in Protected Storage
 
-2. **Data Transfer Messages:**
-   - Carry the actual data exchanged between parties.
-   - May be fragmented into multiple messages.
+- **File Tagging:** Each protected file is associated with a key and tagged in a designated text file called "keys_admn."
+  
+- **Key Administration File (`keys_admn.txt`):**
+  - Stores a list of existing keys with corresponding file names.
+  - Simplifies file tracking and avoids the need to open each file for key verification.
 
-3. **Control Messages:**
-   - Manage dialogue between parties.
-   - Include acknowledgments and retransmission requests.
+![Key Administration File](images/keys_admn_file.png)
 
-### Message Structure
+### File Validation
 
-- **Header:**
-  - Contains fields like message type, command, recipient information, and sequence information.
-  - Fixed size to help the receiver understand the message.
-
-### Communication Rules
-
-- Clearly specify messages and reactions for each communication scenario.
-- Represent rules with sequence diagrams, including at least two:
-  1. Upload process sequence diagram.
-  2. Download process sequence diagram.
+The server employs the hashlib Python library to validate the integrity of files during transit. The validation process ensures that the files uploaded to the server match their original versions. If a discrepancy is detected, the file upload is terminated, and an error message is sent to the client.
 
 ## How to Run
 
@@ -78,8 +64,8 @@ This project involves the design and implementation of a client-server file shar
 
 ## Conclusion
 
-This project aims to provide a secure and efficient file-sharing solution using TCP sockets. The protocol design ensures privacy, reliability, and file integrity. The application allows users to seamlessly upload and download files while managing access permissions.
+This file-sharing application protocol ensures secure and efficient communication between the client and server. It supports various features, including file segregation, user authentication, and file validation, enhancing the overall reliability of the system.
 
 ---
 
-**Note:** This project is developed as part of a networked applications assignment and may be subject to further improvements and enhancements.
+**Note:** This project is developed as part of a sample networked applications and may be subject to further improvements and enhancements.
