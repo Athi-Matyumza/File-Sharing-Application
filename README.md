@@ -45,7 +45,7 @@ The server utilizes two directories: "Open_Storage" for open files and "Protecte
   - Stores a list of existing keys with corresponding file names.
   - Simplifies file tracking and avoids the need to open each file for key verification.
 
-![Key Administration File](images/keys_admn_file.png)
+<img width="800" alt="Screenshot 2024-01-09 122808" src="https://github.com/Athi-sirmatt/Networks-Socket_programming/assets/93771863/7bbc6db5-8a31-4d7a-9726-30c393884616">
 
 ### File Validation
 
