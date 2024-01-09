@@ -6,8 +6,6 @@ This protocol defines the communication format between the client and server in 
 
 ## Request Message Format
 
-![Request Message Format](images/request_message_format.png)
-
 - `<method>`: Request method (e.g., GET, POST, LIST).
 - `<IP address>`: Server's IP address.
 - `<File name>`: Name of the file being uploaded or downloaded.
@@ -16,6 +14,10 @@ This protocol defines the communication format between the client and server in 
 - `<carriage_return>`: Carriage return.
 - `<Header>`: Additional information about the request.
 - `<message-body>`: Actual content of the file.
+
+
+<img width="444" alt="Screenshot 2024-01-09 122706" src="https://github.com/Athi-sirmatt/Networks-Socket_programming/assets/93771863/d7759575-b24b-4682-b376-c810d0a0488d">
+
 
 ## Response Message Format
 
