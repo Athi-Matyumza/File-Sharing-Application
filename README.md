@@ -16,7 +16,7 @@ This protocol defines the communication format between the client and server in 
 - `<message-body>`: Actual content of the file.
 
 
-<img width="444" alt="Screenshot 2024-01-09 122706" src="https://github.com/Athi-sirmatt/Networks-Socket_programming/assets/93771863/d7759575-b24b-4682-b376-c810d0a0488d">
+<img width="800" alt="Screenshot 2024-01-09 122706" src="https://github.com/Athi-sirmatt/Networks-Socket_programming/assets/93771863/d7759575-b24b-4682-b376-c810d0a0488d">
 
 
 ## Response Message Format
