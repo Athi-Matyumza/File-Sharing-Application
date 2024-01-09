@@ -21,12 +21,12 @@ This protocol defines the communication format between the client and server in 
 
 ## Response Message Format
 
-![Response Message Format](images/response_message_format.png)
-
 - `<status code>`: Three-digit code indicating the status of the request (e.g., 200 for OK, 404 for Not Found).
 - `<status message>`: Human-readable response status description.
 - `<headers>`: Additional information about the response.
 - `<message-body>`: Actual data being sent in the response (for file downloads).
+  
+https://github.com/Athi-sirmatt/Networks-Socket_programming/issues/2#issue-2072102796
 
 ## Features
 
